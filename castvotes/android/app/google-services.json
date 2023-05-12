@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "860559570284",
+    "project_id": "castvotes-d0e16",
+    "storage_bucket": "castvotes-d0e16.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:860559570284:android:687ee32ac03c4b76eeaf49",
+        "android_client_info": {
+          "package_name": "com.example.castvotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "860559570284-4kktu76govov3ivd29i4jumv0oqnf0ga.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2rjhOnWPZ3qrrumHSWI0QQJa6EMKW_jo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "860559570284-4kktu76govov3ivd29i4jumv0oqnf0ga.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
