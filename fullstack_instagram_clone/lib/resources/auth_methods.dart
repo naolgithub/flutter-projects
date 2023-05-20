@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fullstack_instagram_clone/models/user.dart' as model;
 
 import 'storage_methods.dart';
 
@@ -41,16 +42,29 @@ class AuthMethods {
         String photoUrl = await StorageMethods()
             .uploadImageToStorage('profilePics', my_file, false);
 
+        model.User user = model.User(
+          username: username,
+          uid: cred.user!.uid,
+          email: email,
+          bio: bio,
+          followers: [],
+          following: [],
+          photoUrl: photoUrl,
+        );
+
         //add user to our database
-        await _firestore.collection('users').doc(cred.user!.uid).set({
-          'username': username,
-          'uid': cred.user!.uid,
-          'email': email,
-          'bio': bio,
-          'followers': [],
-          'following': [],
-          'photoUrl': photoUrl,
-        });
+
+        //THIS IS WITHOUT USING MODELS
+        // await _firestore.collection('users').doc(cred.user!.uid).set({
+        //   'username': username,
+        //   'uid': cred.user!.uid,
+        //   'email': email,
+        //   'bio': bio,
+        //   'followers': [],
+        //   'following': [],
+        //   'photoUrl': photoUrl,
+        // });
+
         //another way of storing user information and ignoring the uid
         // await _firestore.collection('users').add({
         //   'username': username,
@@ -60,6 +74,13 @@ class AuthMethods {
         //   'followers': [],
         //   'following': [],
         // });
+
+        //THIS IS WITH USING MODELS
+        await _firestore
+            .collection('users')
+            .doc(cred.user!.uid)
+            .set(user.toJson());
+
         res = "success";
       }
     }
