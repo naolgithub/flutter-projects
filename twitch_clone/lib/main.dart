@@ -1,7 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:twitch_clone/firebase_options.dart';
+import 'package:twitch_clone/providers/user_provider.dart';
+import 'package:twitch_clone/screens/home_screen.dart';
 import 'package:twitch_clone/screens/login_screen.dart';
 import 'package:twitch_clone/screens/signup_screen.dart';
 import 'package:twitch_clone/utils/colors.dart';
@@ -13,7 +16,16 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => UserProvider(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -95,6 +107,7 @@ class MyApp extends StatelessWidget {
         OnboardingScreen.routeName: (context) => const OnboardingScreen(),
         LoginScreen.routeName: (context) => const LoginScreen(),
         SignupScreen.routeName: (context) => const SignupScreen(),
+        HomeScreen.routeName: (context) => const HomeScreen(),
       },
       home: const OnboardingScreen(),
     );
