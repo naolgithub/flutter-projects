@@ -1,0 +1,5 @@
+Stay Hungry
+Stay Foolish
+- Steve Jobs
+Note:The reason we haven't used file,but Uint8List file_picker is because 
+of dart.io package is not allowed in web platform.
