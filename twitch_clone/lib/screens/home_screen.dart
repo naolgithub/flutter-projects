@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:twitch_clone/screens/feed_screen.dart';
+import 'package:twitch_clone/screens/go_live_screen.dart';
 import 'package:twitch_clone/utils/colors.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,7 +13,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _page = 0;
-  List<Widget> pages = [];
+  List<Widget> pages = [
+    const FeedScreen(),
+    const GoLive(),
+    const Center(
+      child: Text('Browser'),
+    )
+  ];
   onPageChange(int page) {
     setState(() {
       _page = page;
@@ -49,6 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+      body: pages[_page],
     );
   }
 }
