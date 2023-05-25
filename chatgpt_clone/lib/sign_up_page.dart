@@ -39,9 +39,19 @@ class _SignUpPageState extends State<SignUpPage> {
                   height: 5,
                 ),
                 const Text(
-                  '''Please note that phone verification is required for
-                signup. Your number will only be used to verify
-                your identity for security purposes.''',
+                  'Please note that phone verification is required for',
+                  style: TextStyle(
+                    fontSize: 23,
+                  ),
+                ),
+                const Text(
+                  'signup. Your number will only be used to verify',
+                  style: TextStyle(
+                    fontSize: 23,
+                  ),
+                ),
+                const Text(
+                  'your identity for security purposes.',
                   style: TextStyle(
                     fontSize: 23,
                   ),
