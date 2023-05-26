@@ -11,15 +11,24 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var urlData;
+  var urlDataOne;
+  var urlDataTwo;
   void getApiData() async {
-    var url = Uri.parse(
+    //first api
+    var firstUrl = Uri.parse(
       'https://api.unsplash.com/photos/?client_id=vupfa77DTvgkVteN78rKCkFhnbxk0tHnZfezvBnZGnk',
     );
-    final res = await http.get(url);
+    //second api
+    var secondUrl = Uri.parse(
+      'https://api.unsplash.com/photos/?per_page=30&client_id=vupfa77DTvgkVteN78rKCkFhnbxk0tHnZfezvBnZGnk',
+    );
+    final resultOne = await http.get(firstUrl);
+    final resultTwo = await http.get(secondUrl);
     setState(() {
-      urlData = jsonDecode(res.body);
-      // print(urlData);
+      urlDataOne = jsonDecode(resultOne.body);
+      // print(urlDataOne);
+      urlDataTwo = jsonDecode(resultTwo.body);
+      // print(urlDataTwo);
     });
   }
 
@@ -33,23 +42,28 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Wallpaper App'),
+        title: const Text(
+          'Wallpaper App',
+          style: TextStyle(
+            fontStyle: FontStyle.italic,
+          ),
+        ),
       ),
       body: Center(
-        child: urlData == null
+        child: urlDataTwo == null
             ? const CircularProgressIndicator()
             : GridView.builder(
-                itemCount: 10,
+                itemCount: 30,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   mainAxisSpacing: 6,
                   crossAxisCount: 2,
                   crossAxisSpacing: 2,
                 ),
-                itemBuilder: (context, i) {
+                itemBuilder: (context, index) {
                   return Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: NetworkImage(urlData[i]['urls']['full']),
+                        image: NetworkImage(urlDataTwo[index]['urls']['full']),
                         fit: BoxFit.cover,
                       ),
                     ),
