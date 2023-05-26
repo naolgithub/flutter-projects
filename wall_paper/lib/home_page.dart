@@ -60,15 +60,59 @@ class _HomePageState extends State<HomePage> {
                   crossAxisSpacing: 2,
                 ),
                 itemBuilder: (context, index) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: NetworkImage(urlDataTwo[index]['urls']['full']),
-                        fit: BoxFit.cover,
+                  return InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FullImageView(
+                            url: urlDataTwo[index]['urls']['full'],
+                          ),
+                        ),
+                      );
+                    },
+                    /*
+                    In Flutter, a Hero widget is a widget that is used
+                    for creating a transition animation between two screens.
+                    It is typically used to create a smooth and visually
+                    appealing transition when a user navigates from one
+                    screen to another.
+                    */
+                    child: Hero(
+                      tag: 'full',
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image:
+                                NetworkImage(urlDataTwo[index]['urls']['full']),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
                     ),
                   );
                 }),
+      ),
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class FullImageView extends StatelessWidget {
+  var url;
+  FullImageView({super.key, required this.url});
+
+  @override
+  Widget build(BuildContext context) {
+    return Hero(
+      tag: 'full',
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(url),
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
     );
   }
