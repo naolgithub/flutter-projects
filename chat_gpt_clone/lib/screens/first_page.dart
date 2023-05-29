@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
-import 'pallete.dart';
+import '../pallete.dart';
 
 class FirstPage extends StatefulWidget {
   const FirstPage({super.key});

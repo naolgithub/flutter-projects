@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'openai_service.dart';
-import 'pallete.dart';
+import '../openai_service.dart';
+import '../pallete.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
