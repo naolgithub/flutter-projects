@@ -27,7 +27,6 @@ class OpenAIService {
       );
       print(res.body);
       if (res.statusCode == 200) {
-        print('yay');
         String content =
             jsonDecode(res.body)['choices'][0]['message']['content'];
         content.trim();

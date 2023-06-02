@@ -113,6 +113,9 @@ class MyApp extends StatelessWidget {
         SignupScreen.routeName: (context) => const SignupScreen(),
         HomeScreen.routeName: (context) => const HomeScreen(),
       },
+
+      //PERSISTING USER STATE
+      //i.e storing user state using Provider state management
       home: FutureBuilder(
         future: AuthMethods()
             .getCurrentUser(FirebaseAuth.instance.currentUser != null

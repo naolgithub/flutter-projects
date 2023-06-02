@@ -156,12 +156,15 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+
             if (generatedImageUrl != null)
               Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image.network(generatedImageUrl!))),
+                padding: const EdgeInsets.all(10),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.network(generatedImageUrl!),
+                ),
+              ),
             SlideInLeft(
               child: Visibility(
                 visible: generatedContent == null && generatedImageUrl == null,
@@ -249,7 +252,9 @@ class _HomePageState extends State<HomePage> {
               initSpeechToText();
             }
           },
-          child: Icon(speechToText.isListening ? Icons.stop : Icons.mic),
+          child: Icon(
+            speechToText.isListening ? Icons.stop : Icons.mic,
+          ),
         ),
       ),
     );

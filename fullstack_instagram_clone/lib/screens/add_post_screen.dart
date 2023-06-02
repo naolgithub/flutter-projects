@@ -1,11 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:fullstack_instagram_clone/resources/firestore_methods.dart';
 import 'package:fullstack_instagram_clone/utils/colors.dart';
+import 'package:fullstack_instagram_clone/utils/utils.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
-import '../models/user.dart';
 import '../providers/user_provider.dart';
 
 class AddPostScreen extends StatefulWidget {
@@ -44,11 +45,51 @@ class _AddPostScreenState extends State<AddPostScreen> {
 
   // Uint8List? _file;
   final TextEditingController _descriptionController = TextEditingController();
+  bool _isLoading = false;
+  void postImage(
+    String uid,
+    String username,
+    String profImage,
+  ) async {
+    setState(() {
+      _isLoading = true;
+    });
+    try {
+      // String res = await FirestoreMethods().uploadPost(
+      //   _descriptionController.text,
+      //   _file!,
+      //   uid,
+      //   username,
+      //   profImage,
+      // );
+
+      String res = await FirestoreMethods().uploadPost(
+        _descriptionController.text,
+        _filee!,
+        uid,
+        username,
+        profImage,
+      );
+      if (res == 'success') {
+        setState(() {
+          _isLoading = false;
+        });
+        showSnackBar('Posted!', context);
+      } else {
+        setState(() {
+          _isLoading = false;
+        });
+        showSnackBar(res, context);
+      }
+    } catch (e) {
+      showSnackBar(e.toString(), context);
+    }
+  }
 
   _selectImage(BuildContext context) async {
     return showDialog(
         context: context,
-        builder: (context) {
+        builder: (BuildContext context) {
           return SimpleDialog(
             title: const Text('Create a post'),
             children: [
@@ -108,7 +149,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final User user = Provider.of<UserProvider>(context).getUser;
+    final UserProvider userProvider = Provider.of<UserProvider>(context);
     return _filee == null
         ? Center(
             child: IconButton(
@@ -127,7 +168,11 @@ class _AddPostScreenState extends State<AddPostScreen> {
               centerTitle: false,
               actions: [
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () => postImage(
+                    userProvider.getUser!.uid,
+                    userProvider.getUser!.username,
+                    userProvider.getUser!.photoUrl,
+                  ),
                   child: const Text(
                     'Post',
                     style: TextStyle(
@@ -141,12 +186,14 @@ class _AddPostScreenState extends State<AddPostScreen> {
             ),
             body: Column(
               children: [
+                _isLoading ? const LinearProgressIndicator() : Container(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CircleAvatar(
-                      backgroundImage: NetworkImage(user.photoUrl),
+                      backgroundImage:
+                          NetworkImage(userProvider.getUser!.photoUrl),
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.45,
