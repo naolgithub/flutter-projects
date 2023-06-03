@@ -19,6 +19,9 @@ class ApiService {
 
       if (jsonResponse['error'] != null) {
         print("jsonResponse['error']${jsonResponse['error']["message"]}");
+        print("jsonResponse['error']${jsonResponse['error']["type"]}");
+        print("jsonResponse['error']${jsonResponse['error']["param"]}");
+        print("jsonResponse['error']${jsonResponse['error']["code"]}");
         throw HttpException(jsonResponse['error']["message"]);
       }
     } catch (error) {
