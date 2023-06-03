@@ -106,7 +106,7 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Container(
           padding: const EdgeInsets.symmetric(
-            horizontal: 20,
+            horizontal: 40,
           ),
           child: SingleChildScrollView(
             child: Column(
@@ -116,23 +116,61 @@ class _MyAppState extends State<MyApp> {
                   height: 70,
                 ),
                 const Text(
-                  'Value',
+                  'value',
                 ),
                 const SizedBox(
                   height: 30,
                 ),
-                TextField(
-                  decoration: const InputDecoration(
-                    hintText: "Please insert the measure to be converted",
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20)
+                      .copyWith(right: 20),
+                  child: TextField(
+                    decoration: const InputDecoration(
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(20.0),
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(20.0),
+                        ),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(2.0),
+                        ),
+                      ),
+                      disabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(2.0),
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(2.0),
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(20.0),
+                        ),
+                      ),
+                      hintText: "please insert the measure to be converted",
+                      hintStyle: TextStyle(
+                        color: Colors.lightBlueAccent,
+                        fontSize: 25,
+                      ),
+                    ),
+                    onChanged: (text) {
+                      var rv = double.tryParse(text);
+                      if (rv != null) {
+                        setState(() {
+                          _numberFrom = rv;
+                        });
+                      }
+                    },
                   ),
-                  onChanged: (text) {
-                    var rv = double.tryParse(text);
-                    if (rv != null) {
-                      setState(() {
-                        _numberFrom = rv;
-                      });
-                    }
-                  },
                 ),
                 const SizedBox(
                   height: 40,
@@ -159,7 +197,7 @@ class _MyAppState extends State<MyApp> {
                   height: 30,
                 ),
                 const Text(
-                  'To',
+                  'to',
                 ),
                 const SizedBox(
                   height: 20,
@@ -186,7 +224,7 @@ class _MyAppState extends State<MyApp> {
                 ),
                 ElevatedButton(
                   child: const Text(
-                    'Convert',
+                    'convert',
                     style: TextStyle(
                       color: Colors.cyan,
                       fontSize: 30,
