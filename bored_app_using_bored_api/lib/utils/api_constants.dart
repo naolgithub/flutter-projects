@@ -1,2 +1,2 @@
-String baseUrl = 'http://www.boredapi.com/api/activity';
+String baseUrl = 'https://www.boredapi.com/api';
 String apiKey = '';
