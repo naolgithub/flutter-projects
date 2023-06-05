@@ -33,7 +33,17 @@ class _HomePageState extends State<HomePage> {
               future: futureActivity,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  return Text(snapshot.data!.activity);
+                  return Column(
+                    children: [
+                      Text(snapshot.data!.type),
+                      Text(snapshot.data!.activity),
+                      Text(snapshot.data!.key),
+                      Text(snapshot.data!.link),
+                      // Text(snapshot.data!.participants),
+                      // Text(snapshot.data!.price),
+                      // Text(snapshot.data!.accessibility),
+                    ],
+                  );
                 } else if (snapshot.hasError) {
                   return Text('${snapshot.error}');
                 }
