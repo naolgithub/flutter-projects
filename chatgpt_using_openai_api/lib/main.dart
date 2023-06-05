@@ -1,5 +1,7 @@
+import 'package:chatgpt_using_openai_api/providers/models_provider.dart';
 import 'package:chatgpt_using_openai_api/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'constants/constants.dart';
 
@@ -12,18 +14,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'ChatGPT Clone using openai api',
-      theme: ThemeData(
-        scaffoldBackgroundColor: scaffoldBackgroundColor,
-        appBarTheme: AppBarTheme(
-          color: cardColor,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => ModelsProvider(),
         ),
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'ChatGPT Clone using openai api',
+        theme: ThemeData(
+          scaffoldBackgroundColor: scaffoldBackgroundColor,
+          appBarTheme: AppBarTheme(
+            color: cardColor,
+          ),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const ChatScreen(),
       ),
-      home: const ChatScreen(),
     );
   }
 }
