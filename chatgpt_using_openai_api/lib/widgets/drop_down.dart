@@ -1,5 +1,10 @@
-import 'package:chatgpt_using_openai_api/constants/constants.dart';
+import 'package:chatgpt_using_openai_api/models/models_model.dart';
+import 'package:chatgpt_using_openai_api/providers/models_provider.dart';
+import 'package:chatgpt_using_openai_api/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../constants/constants.dart';
 
 class ModelsDropDownWidget extends StatefulWidget {
   const ModelsDropDownWidget({super.key});
@@ -9,17 +14,45 @@ class ModelsDropDownWidget extends StatefulWidget {
 }
 
 class _ModelsDropDownWidgetState extends State<ModelsDropDownWidget> {
-  String currentModel = 'Model1';
+  // String currentModel = 'text-davinci-003';
+  String? currentModel;
   @override
   Widget build(BuildContext context) {
-    return DropdownButton(
-      dropdownColor: scaffoldBackgroundColor,
-      iconEnabledColor: Colors.white,
-      items: getModelsItem,
-      onChanged: (value) {
-        setState(() {
-          currentModel = value.toString();
-        });
+    final modelsProvider = Provider.of<ModelsProvider>(context, listen: false);
+    currentModel = modelsProvider.getCurrentModel;
+    return FutureBuilder<List<ModelsModel>>(
+      // future: ApiService.getModels(),
+      future: modelsProvider.getAllModels(),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Center(
+            child: TextWidget(label: snapshot.error.toString()),
+          );
+        }
+        return snapshot.data == null || snapshot.data!.isEmpty
+            ? const SizedBox.shrink()
+            : FittedBox(
+                child: DropdownButton(
+                  dropdownColor: scaffoldBackgroundColor,
+                  iconEnabledColor: Colors.white,
+                  items: List<DropdownMenuItem<String>>.generate(
+                    snapshot.data!.length,
+                    (index) => DropdownMenuItem(
+                      value: snapshot.data![index].id,
+                      child: TextWidget(
+                        label: snapshot.data![index].id,
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
+                  onChanged: (value) {
+                    setState(() {
+                      currentModel = value.toString();
+                    });
+                    modelsProvider.setCurrentModel(value.toString());
+                  },
+                ),
+              );
       },
     );
   }
