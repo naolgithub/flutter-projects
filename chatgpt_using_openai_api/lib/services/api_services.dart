@@ -67,7 +67,6 @@ class ApiService {
       // print('jsonResponse: $jsonResponse');
       if (jsonResponse['error'] != null) {
         // print("jsonResponse['error']${jsonResponse['error']["message"]}");
-
         // print("jsonResponse['error']${jsonResponse['error']["type"]}");
         // print("jsonResponse['error']${jsonResponse['error']["param"]}");
         // print("jsonResponse['error']${jsonResponse['error']["code"]}");
