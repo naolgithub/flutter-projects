@@ -3,14 +3,7 @@
 A new Flutter project.
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This is something you could add to your personal website, for instance.
+1.The Bored API ensures that a user is never bored.
+2.When requested, it responds with a random activity for the user to do.
+3.You can even customize the type and the number of participants!
