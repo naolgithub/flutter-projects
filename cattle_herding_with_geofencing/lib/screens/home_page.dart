@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final String nameOfCattleHerder;
+  final double radius;
+  const HomePage({
+    required this.nameOfCattleHerder,
+    required this.radius,
+    super.key,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -10,6 +16,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+      body: const Center(child: Text('daga')),
+    );
   }
 }
