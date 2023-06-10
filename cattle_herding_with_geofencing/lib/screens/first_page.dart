@@ -49,115 +49,96 @@ class _FirstPageState extends State<FirstPage> {
       //     ),
       //   ),
       // ),
-      body: Stack(
-        children: [
-          SizedBox(
-            // width: MediaQuery.of(context).size.width,
-            width: double.infinity,
-            // height: MediaQuery.of(context).size.height,
-            height: double.infinity,
-            child: Image.asset(
-              'assets/images/backgroundImageTwo.jpeg',
-              fit: BoxFit.cover,
+      body: SafeArea(
+        child: Stack(
+          children: [
+            SizedBox(
+              // width: MediaQuery.of(context).size.width,
+              width: double.infinity,
+              // height: MediaQuery.of(context).size.height,
+              height: double.infinity,
+              child: Image.asset(
+                'assets/images/backgroundImageTwo.jpeg',
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          Column(
-            children: [
-              Container(
-                height: 200,
-                width: 200,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.horizontal(),
-                ),
-                child: const Text(
-                  r'Welcome to cattle herding system!',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 30,
+            Column(
+              children: [
+                Container(
+                  height: 200,
+                  width: 200,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.horizontal(),
                   ),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 5)
-                    .copyWith(right: 300),
-                child: TextField(
-                  controller: nameController,
-                  onSubmitted: (value) {
-                    nameOfCattleHerder = nameController.text;
-                    nameController.clear();
-                  },
-                  decoration: const InputDecoration(
-                    hintText: 'What is your name ?',
-                    hintStyle: TextStyle(
+                  child: const Text(
+                    r'Welcome to cattle herding system!',
+                    style: TextStyle(
                       color: Colors.black,
-                      fontSize: 20,
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.horizontal(
-                        right: Radius.circular(20),
-                        left: Radius.circular(5),
-                      ),
+                      fontSize: 30,
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 50),
-                child: Stack(
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          '''Please go to center of your designated area,
-                          by taking powered device 👉''',
-                          style: TextStyle(
-                            color: Colors.lightBlue,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            fontStyle: FontStyle.italic,
-                          ),
+                // const SizedBox(
+                //   height: 10,
+                // ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 3, horizontal: 5)
+                          .copyWith(right: 10),
+                  child: TextField(
+                    controller: nameController,
+                    onSubmitted: (value) {
+                      nameOfCattleHerder = nameController.text;
+                      nameController.clear();
+                    },
+                    decoration: const InputDecoration(
+                      hintText: 'What is your cattle name ?',
+                      hintStyle: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.horizontal(
+                          right: Radius.circular(20),
+                          left: Radius.circular(5),
                         ),
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              top: 10,
-                            ),
-                            child: AnimatedDefaultTextStyle(
-                              style: TextStyle(
-                                fontSize: _fontSize,
-                                color: _color,
-                              ),
-                              duration: const Duration(microseconds: 200),
-                              child: const Text(
-                                'I am at the center',
-                                style: TextStyle(
-                                  fontStyle: FontStyle.italic,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 50),
+                  child: Stack(
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            '''Please go to center of your designated area,
+                            by taking powered device 👉''',
+                            style: TextStyle(
+                              color: Colors.lightBlue,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              fontStyle: FontStyle.italic,
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              top: 0.5,
-                            ),
-                            child: MaterialButton(
-                              onPressed: () {},
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                top: 10,
+                              ),
                               child: AnimatedDefaultTextStyle(
                                 style: TextStyle(
                                   fontSize: _fontSize,
@@ -165,7 +146,7 @@ class _FirstPageState extends State<FirstPage> {
                                 ),
                                 duration: const Duration(microseconds: 200),
                                 child: const Text(
-                                  'Click Me',
+                                  'I am at the center',
                                   style: TextStyle(
                                     fontStyle: FontStyle.italic,
                                     fontWeight: FontWeight.bold,
@@ -173,58 +154,80 @@ class _FirstPageState extends State<FirstPage> {
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                top: 0.5,
+                              ),
+                              child: MaterialButton(
+                                onPressed: () {},
+                                child: AnimatedDefaultTextStyle(
+                                  style: TextStyle(
+                                    fontSize: _fontSize,
+                                    color: _color,
+                                  ),
+                                  duration: const Duration(microseconds: 200),
+                                  child: const Text(
+                                    'Click Me',
+                                    style: TextStyle(
+                                      fontStyle: FontStyle.italic,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 5)
-                  .copyWith(
-                right: 100,
-                // left: 300,
-                bottom: 50,
-              ),
-              child: TextField(
-                  controller: radiusController,
-                  focusNode: FocusNode(),
-                  decoration: const InputDecoration(
-                    hintText: 'Please enter the radius of your area',
-                    hintStyle: TextStyle(
-                      color: Colors.cyan,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.horizontal(
-                        right: Radius.circular(20),
-                        left: Radius.circular(5),
-                      ),
-                    ),
+                    ],
                   ),
-                  onSubmitted: (value) {
-                    radiusController.clear();
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) {
-                        return HomePage(
-                          radius: double.parse(radiusController.text),
-                          nameOfCattleHerder: nameOfCattleHerder.toString(),
-                        );
-                      },
-                    ));
-                  }),
+                ),
+              ],
             ),
-          ),
-        ],
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 5)
+                    .copyWith(
+                  right: 100,
+                  // left: 300,
+                  bottom: 50,
+                ),
+                child: TextField(
+                    controller: radiusController,
+                    focusNode: FocusNode(),
+                    decoration: const InputDecoration(
+                      hintText: 'Please enter the radius of your area',
+                      hintStyle: TextStyle(
+                        color: Colors.cyan,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.horizontal(
+                          right: Radius.circular(20),
+                          left: Radius.circular(5),
+                        ),
+                      ),
+                    ),
+                    onSubmitted: (value) {
+                      radiusController.clear();
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) {
+                          return HomePage(
+                            radiusController: radiusController,
+                            nameController: nameController,
+                          );
+                        },
+                      ));
+                    }),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
