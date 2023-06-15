@@ -44,39 +44,44 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDTvTA9XK7jwKS9OcAWAn9zMs5x63pMHVc',
-    appId: '1:740724783369:web:31f63672d86692f4cb3bd8',
-    messagingSenderId: '740724783369',
-    projectId: 'cattle-herding-with-geofencing',
-    authDomain: 'cattle-herding-with-geofencing.firebaseapp.com',
-    storageBucket: 'cattle-herding-with-geofencing.appspot.com',
+    apiKey: 'AIzaSyB5UFanDkUFWrZdLe2WGRHKCgS-YVqwbfk',
+    appId: '1:760555267133:web:d56ab05ba93d23a55db654',
+    messagingSenderId: '760555267133',
+    projectId: 'cattle-herding-4ae31',
+    authDomain: 'cattle-herding-4ae31.firebaseapp.com',
+    databaseURL: 'https://cattle-herding-4ae31-default-rtdb.firebaseio.com',
+    storageBucket: 'cattle-herding-4ae31.appspot.com',
+    measurementId: 'G-JTM6L696B1',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAwZAOVlBWk_8_1__R_RN0TkG6eKKtKhdk',
-    appId: '1:740724783369:android:82d0be646a1c428bcb3bd8',
-    messagingSenderId: '740724783369',
-    projectId: 'cattle-herding-with-geofencing',
-    storageBucket: 'cattle-herding-with-geofencing.appspot.com',
+    apiKey: 'AIzaSyBCqpOqWlunC3tJ8GOGB91pogaddPzZIps',
+    appId: '1:760555267133:android:6b140520e9ec83ef5db654',
+    messagingSenderId: '760555267133',
+    projectId: 'cattle-herding-4ae31',
+    databaseURL: 'https://cattle-herding-4ae31-default-rtdb.firebaseio.com',
+    storageBucket: 'cattle-herding-4ae31.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyB4rJXY2MwgEQoaoCCEZ8BDCRQGJLJJi5A',
-    appId: '1:740724783369:ios:70c7f86434950dcdcb3bd8',
-    messagingSenderId: '740724783369',
-    projectId: 'cattle-herding-with-geofencing',
-    storageBucket: 'cattle-herding-with-geofencing.appspot.com',
-    iosClientId: '740724783369-ur9n3g3kdnkup1v1h03ra8hftmm6qdnt.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCl2EiYsJkXet6X0A2nA7CXbpZfHo9EvpI',
+    appId: '1:760555267133:ios:cb70efdc902768695db654',
+    messagingSenderId: '760555267133',
+    projectId: 'cattle-herding-4ae31',
+    databaseURL: 'https://cattle-herding-4ae31-default-rtdb.firebaseio.com',
+    storageBucket: 'cattle-herding-4ae31.appspot.com',
+    iosClientId: '760555267133-033ljq0p7q4bn3216a1msmef1c7bud37.apps.googleusercontent.com',
     iosBundleId: 'com.example.cattleHerdingWithGeofencing',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyB4rJXY2MwgEQoaoCCEZ8BDCRQGJLJJi5A',
-    appId: '1:740724783369:ios:fadad253a61ef354cb3bd8',
-    messagingSenderId: '740724783369',
-    projectId: 'cattle-herding-with-geofencing',
-    storageBucket: 'cattle-herding-with-geofencing.appspot.com',
-    iosClientId: '740724783369-6qhr8hin82jaru4fjkjg72osr3e30lgg.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCl2EiYsJkXet6X0A2nA7CXbpZfHo9EvpI',
+    appId: '1:760555267133:ios:b34649c8c7268ff45db654',
+    messagingSenderId: '760555267133',
+    projectId: 'cattle-herding-4ae31',
+    databaseURL: 'https://cattle-herding-4ae31-default-rtdb.firebaseio.com',
+    storageBucket: 'cattle-herding-4ae31.appspot.com',
+    iosClientId: '760555267133-66skf5m5inf0edop7nn79qr20mo3oh6o.apps.googleusercontent.com',
     iosBundleId: 'com.example.cattleHerdingWithGeofencing.RunnerTests',
   );
 }
