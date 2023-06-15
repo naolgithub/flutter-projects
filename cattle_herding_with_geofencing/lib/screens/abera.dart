@@ -1,9 +1,7 @@
 import 'dart:async';
 
-import 'package:animate_do/animate_do.dart';
+import 'package:cattle_herding_with_geofencing/screens/health_status_page.dart';
 import 'package:flutter/material.dart';
-
-import 'home_page.dart';
 
 class Abera extends StatefulWidget {
   const Abera({super.key});
@@ -13,9 +11,10 @@ class Abera extends StatefulWidget {
 }
 
 class _AberaState extends State<Abera> {
-  final TextEditingController nameController = TextEditingController();
+  final TextEditingController latitudeController = TextEditingController();
+  final TextEditingController longtitudeController = TextEditingController();
   final TextEditingController radiusController = TextEditingController();
-  String nameOfCattleHerder = '';
+
   double _fontSize = 16.0;
   Color _color = Colors.cyan;
   @override
@@ -34,8 +33,8 @@ class _AberaState extends State<Abera> {
   @override
   void dispose() {
     super.dispose();
-    nameController.dispose();
-    radiusController.dispose();
+    latitudeController.dispose();
+    longtitudeController.dispose();
   }
 
   @override
@@ -74,13 +73,41 @@ class _AberaState extends State<Abera> {
                   padding:
                       const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
                   child: TextField(
-                    controller: nameController,
+                    controller: latitudeController,
                     onSubmitted: (value) {
-                      nameOfCattleHerder = nameController.text;
-                      nameController.clear();
+                      // nameController.clear();
                     },
                     decoration: const InputDecoration(
-                      hintText: 'What is your cattle name ?',
+                      hintText: 'What is your center of latitude ?',
+                      hintStyle: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.horizontal(
+                          right: Radius.circular(20),
+                          left: Radius.circular(5),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
+                  child: TextField(
+                    controller: longtitudeController,
+                    onSubmitted: (value) {},
+                    decoration: const InputDecoration(
+                      hintText: 'What is your center of longtitude ?',
                       hintStyle: TextStyle(
                         color: Colors.black,
                         fontSize: 20,
@@ -105,10 +132,9 @@ class _AberaState extends State<Abera> {
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5),
                   child: Text(
-                    '''Please go to center of your designated area,
-               by taking powered device''',
+                    '''This is cattle's field''',
                     style: TextStyle(
-                      color: Colors.cyan,
+                      color: Colors.white,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       fontStyle: FontStyle.italic,
@@ -116,7 +142,7 @@ class _AberaState extends State<Abera> {
                   ),
                 ),
                 const SizedBox(
-                  height: 50,
+                  height: 10,
                 ),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5),
@@ -125,32 +151,32 @@ class _AberaState extends State<Abera> {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontStyle: FontStyle.italic,
-                      fontSize: 40,
+                      fontSize: 50,
                     ),
                   ),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: ZoomIn(
-                    duration: const Duration(milliseconds: 200),
-                    child: MaterialButton(
-                      onPressed: () {},
-                      child: const Text(
-                        // '''Set designated area''',
-                        '''Click designated area''',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontStyle: FontStyle.italic,
-                          color: Colors.cyan,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 5),
+                //   child: ZoomIn(
+                //     duration: const Duration(milliseconds: 200),
+                //     child: MaterialButton(
+                //       onPressed: () {},
+                //       child: const Text(
+                //         // '''Set designated area''',
+                //         '''Click designated area''',
+                //         style: TextStyle(
+                //           fontWeight: FontWeight.bold,
+                //           fontStyle: FontStyle.italic,
+                //           color: Colors.white,
+                //           fontSize: 20,
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 const SizedBox(
                   height: 50,
                 ),
@@ -158,36 +184,38 @@ class _AberaState extends State<Abera> {
                   padding:
                       const EdgeInsets.symmetric(vertical: 3, horizontal: 5),
                   child: TextField(
-                      controller: radiusController,
-                      focusNode: FocusNode(),
-                      decoration: const InputDecoration(
-                        hintText: 'Please enter the radius of your area',
-                        hintStyle: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.horizontal(
-                            right: Radius.circular(20),
-                            left: Radius.circular(5),
-                          ),
+                    controller: radiusController,
+                    focusNode: FocusNode(),
+                    decoration: const InputDecoration(
+                      hintText: 'Please enter the radius of your area',
+                      hintStyle: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.horizontal(
+                          right: Radius.circular(20),
+                          left: Radius.circular(5),
                         ),
                       ),
-                      onSubmitted: (value) {
-                        radiusController.clear();
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) {
-                            return HomePage(
-                              radiusController: radiusController,
-                              nameController: nameController,
-                            );
-                          },
-                        ));
-                      }),
+                    ),
+                    onSubmitted: (value) {
+                      // radiusController.clear();
+                      // Navigator.of(context).push(MaterialPageRoute(
+                      //   builder: (context) {
+                      //     return HealthStatusPage(
+                      //       radiusController: radiusController.text,
+                      //       lontitudeController: longtitudeController.text,
+                      //       latitudeController: latitudeController.text,
+                      //     );
+                      //   },
+                      // ));
+                    },
+                  ),
                 ),
                 const SizedBox(
                   height: 30,
@@ -200,17 +228,18 @@ class _AberaState extends State<Abera> {
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => HomePage(
-                              nameController: nameController,
-                              radiusController: radiusController,
-                            ),
-                          ),
+                              builder: (context) => HealthStatusPage(
+                                    radiusController: radiusController.text,
+                                    lontitudeController:
+                                        longtitudeController.text,
+                                    latitudeController: latitudeController.text,
+                                  )),
                         );
                       },
                       child: const Text(
                         'Submit',
                         style: TextStyle(
-                          color: Colors.lightBlue,
+                          color: Colors.white,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                           fontStyle: FontStyle.italic,
