@@ -8,11 +8,11 @@ import 'package:http/http.dart' as http;
 import '../models/activity.dart';
 
 class ApiService {
-  static Future<Activity> getData() async {
+  static Future<Activity> getData(String type) async {
     try {
-      var response = await http.get(Uri.parse('$baseUrl/activity'));
+      var response = await http.get(Uri.parse('$baseUrl$type'));
       var jsonResponse = jsonDecode(response.body);
-      // print('jsonResponse: $jsonResponse');
+      //print('jsonResponse: $jsonResponse');
       log('jsonResponse: $jsonResponse');
       if (jsonResponse['error'] != null) {
         // print("jsonResponse['error']${jsonResponse['error']}");
