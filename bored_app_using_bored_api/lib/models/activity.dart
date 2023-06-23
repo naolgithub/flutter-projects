@@ -49,15 +49,15 @@ class Activity {
     };
   }
 
-  factory Activity.fromJson(Map<String, dynamic> json) {
+  factory Activity.fromJson(Map<String, dynamic> map) {
     return Activity(
-      activity: json['activity'],
-      type: json['type'],
-      participants: json['participants'],
-      price: json['price'],
-      link: json['link'],
-      key: json['key'],
-      accessibility: json['accessibility'],
+      activity: map['activity'],
+      type: map['type'],
+      participants: map['participants'],
+      price: map['price'],
+      link: map['link'],
+      key: map['key'],
+      accessibility: map['accessibility'],
     );
   }
 

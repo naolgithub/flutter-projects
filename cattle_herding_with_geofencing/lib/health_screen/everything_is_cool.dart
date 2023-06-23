@@ -12,20 +12,15 @@ class _EverythingIsCoolState extends State<EverythingIsCool> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: const Icon(Icons.forward_5_rounded),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-            );
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
           },
+          icon: const Icon(Icons.arrow_back),
         ),
         centerTitle: true,
         title: const Text(
-          'Fine',
+          'Everything is perfect',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
