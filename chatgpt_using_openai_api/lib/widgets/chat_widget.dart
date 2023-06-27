@@ -1,17 +1,19 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:chatgpt_using_openai_api/constants/constants.dart';
 import 'package:chatgpt_using_openai_api/services/assets_manager.dart';
 import 'package:chatgpt_using_openai_api/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
 class ChatWidget extends StatelessWidget {
+  const ChatWidget(
+      {super.key,
+      required this.msg,
+      required this.chatIndex,
+      this.shouldAnimate = false});
+
   final String msg;
   final int chatIndex;
-  const ChatWidget({
-    super.key,
-    required this.msg,
-    required this.chatIndex,
-  });
-
+  final bool shouldAnimate;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -25,15 +27,44 @@ class ChatWidget extends StatelessWidget {
               children: [
                 Image.asset(
                   chatIndex == 0
-                      ? AssetsManager.userName
+                      ? AssetsManager.userImage
                       : AssetsManager.botImage,
-                  width: 30,
                   height: 30,
+                  width: 30,
                 ),
                 const SizedBox(
-                  height: 8,
+                  width: 8,
                 ),
-                Expanded(child: TextWidget(label: msg)),
+                Expanded(
+                  child: chatIndex == 0
+                      ? TextWidget(
+                          label: msg,
+                        )
+                      : shouldAnimate
+                          ? DefaultTextStyle(
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16),
+                              child: AnimatedTextKit(
+                                  isRepeatingAnimation: false,
+                                  repeatForever: false,
+                                  displayFullTextOnTap: true,
+                                  totalRepeatCount: 1,
+                                  animatedTexts: [
+                                    TyperAnimatedText(
+                                      msg.trim(),
+                                    ),
+                                  ]),
+                            )
+                          : Text(
+                              msg.trim(),
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16),
+                            ),
+                ),
                 chatIndex == 0
                     ? const SizedBox.shrink()
                     : const Row(
@@ -45,12 +76,12 @@ class ChatWidget extends StatelessWidget {
                             color: Colors.white,
                           ),
                           SizedBox(
-                            height: 5,
+                            width: 5,
                           ),
                           Icon(
                             Icons.thumb_down_alt_outlined,
                             color: Colors.white,
-                          ),
+                          )
                         ],
                       ),
               ],
