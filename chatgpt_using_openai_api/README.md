@@ -1,16 +1,26 @@
 # chatgpt_using_openai_api
+* The new Chat API now calls gpt-3.5-turbo, the same model used in the ChatGPT product.
 
-A new Flutter project.
+*This app covers how to integrate the Rest API in a Flutter application.
+Mostly focuses on the REST API integration in Flutter.
 
-## Getting Started
+***How this project can be of help:
+1.Gaining more knowledge in Flutter and Rest API integration
+2.Building a ChatBOT App
+3.HTTP requests
+4.JSON serialization
+5.Automatic list scrolling
+6.Error Handling
+7.Clean and Clear design
+8.The minimum amount of code, with Provider state management
 
-This project is a starting point for a Flutter application.
+***What's in the project:
+1.Provider State management
+2.Clean code and avoid Boilerplate code
+3.Managing and updating packages
+4.Theming
+5.Flutter general AppBars
+6.Reusable codes for widgets and functions.
+7.Flutter ListView Builder
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
